@@ -35,14 +35,17 @@ class ProductManager {
         stock: "7",
       },
     ];
-
+    // llamo a la funcion perteneciente a esta clase detallada debajo
     this.loadProducts(prods);
   }
-
+  // funcion de carga de los productos
   loadProducts(products) {
+
+    // selecciono al div contenedor por id, y lo reseteo
     const productContainer = document.querySelector("#products");
     productContainer.innerHTML = "";
 
+    // de haber productos cargados en el array, por cada uno, genero elemento contenedor y seteo contenido html
     if (products.length === 0) {
       alert("No content. Add products.");
     } else {
@@ -52,7 +55,7 @@ class ProductManager {
         product.setAttribute("id","prod"+element.id)
         product.innerHTML = `
                     <div class = "img-box"> 
-                        <img src="./Assets/img/${element.img}" alt="Imagen del producto">
+                        <img src="./Assets/img/${element.img}" alt="Imagen del producto"> 
                     </div>
                     <div class = "content-box">
                         <h3>${element.marca} ${element.modelo}</h3>
@@ -64,5 +67,13 @@ class ProductManager {
         productContainer.appendChild(product);
       });
     }
+  }
+
+  addToCart(productDetails) {
+    // agrego el producto deseado al carrito
+    cart.push (productDetails);
+
+    // genero el contenido html relacionado al articulo agregado al carrito
+    
   }
 }

@@ -158,14 +158,15 @@ nav .burger div {
 
 .main-container .intro-container {
   text-align: center;
-  letter-spacing: 3px;
+  letter-spacing: 2.5px;
   padding: 40px;
   font-weight: 500;
 }
 
-.main-container h1 {
-  margin-bottom: 15px;
-  letter-spacing: 4px;
+.main-container img {
+  height: 300px;
+  width: 350px;
+  margin-bottom: 20px;
 }
 
 .product-container {
@@ -282,6 +283,7 @@ nav .burger div {
 .product-container :hover .buy {
   opacity: 1;
   border: solid 1px white;
+  margin-bottom: 10px;
 }
 
 @media screen and (max-width: 768px) {
