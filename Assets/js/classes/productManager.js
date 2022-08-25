@@ -60,7 +60,7 @@ class ProductManager {
                     <div class = "content-box">
                         <h3>${element.marca} ${element.modelo}</h3>
                         <h4 class = "price">${element.precio}</h4>
-                        <button href="#" class="buy">Buy Now</button>
+                        <a href="javascript:addProduct(${element.id})" class="buy">Buy Now</a>
                     </div>
                 `;
 
@@ -72,8 +72,46 @@ class ProductManager {
   addToCart(productDetails) {
     // agrego el producto deseado al carrito
     cart.push (productDetails);
+    
+    // confirmo al usuario que el producto fue agregado implementando SweetAlert2
+    // luego voy a agregarla a remover productos, limpiar el carrito, y confirmar compra
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+    
+    Toast.fire({
+      icon: 'success',
+      title: 'Producto añadido al carrito!'
+    })
 
     // genero el contenido html relacionado al articulo agregado al carrito
+    let cartContent = document.querySelector('#cart');
+    cartContent.innerHTML = "";
+
+    cart.forEach((element) => {
+
+      const cartProduct = document.createElement("div");
+      cartProduct.classList.add("cart-product")
+
+      cartProduct.innerHTML = `
+      <div class = "cart-product-image"> 
+        <img src="${element.img}" alt="Imagen del producto"> 
+      </div>
+      <div class = "cart-product-name">${element.modelo}</div>
+      <div class = "cart-product-price">${element.precio}</div>
+      `;
     
+      cartContent.appendChild(cartProduct)
+
+    });
+
   }
 }
