@@ -1,42 +1,51 @@
 class ProductManager {
   // inicializo el array de (objetos) productos
   initialize() {
-    prods = [
-      {
-        id: "1",
-        marca: "Nike",
-        modelo: "Jordan Retro",
-        img: "jordan-retro.png",
-        precio: "$99.99",
-        stock: "3",
-      },
-      {
-        id: "2",
-        marca: "Adidas",
-        modelo: "Yeezy",
-        img: "adidas-yeezy.png",
-        precio: "$299.99",
-        stock: "1",
-      },
-      {
-        id: "3",
-        marca: "Nike",
-        modelo: "Air Force",
-        img: "air-force.png",
-        precio: "$79.99",
-        stock: "7",
-      },
-      {
-        id: "4",
-        marca: "Nike",
-        modelo: "Air Max",
-        img: "air-max.png",
-        precio: "$69.99",
-        stock: "7",
-      },
-    ];
+
+    fetch(url)
+
+    .then  ( response => response.json())
+    .then ( data => {
+      prods = data.products;
+
+      this.loadProducts(prods);
+    })
+
+    // prods = [
+    //   {
+    //     id: "1",
+    //     marca: "Nike",
+    //     modelo: "Jordan Retro",
+    //     img: "jordan-retro.png",
+    //     precio: "$99.99",
+    //   },
+    //   {
+    //     id: "2",
+    //     marca: "Adidas",
+    //     modelo: "Yeezy",
+    //     img: "adidas-yeezy.png",
+    //     precio: "$299.99",
+    //   },
+    //   {
+    //     id: "3",
+    //     marca: "Nike",
+    //     modelo: "Air Force",
+    //     img: "air-force.png",
+    //     precio: "$79.99",
+    //   },
+    //   {
+    //     id: "4",
+    //     marca: "Nike",
+    //     modelo: "Air Max",
+    //     img: "air-max.png",
+    //     precio: "$69.99",
+    //   },
+    // ];
+
+
+
     // llamo a la funcion perteneciente a esta clase detallada debajo
-    this.loadProducts(prods);
+    
   }
   // funcion de carga de los productos
   loadProducts(products) {

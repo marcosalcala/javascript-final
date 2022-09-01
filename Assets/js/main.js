@@ -3,6 +3,8 @@ let prods = [];
 let cart = [];
 let manager;
 
+const url = './Assets/js/db.json'
+
 
 document.addEventListener('DOMContentLoaded', () => {
 
