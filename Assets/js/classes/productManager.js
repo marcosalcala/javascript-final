@@ -1,7 +1,7 @@
 class ProductManager {
   // inicializo el array de (objetos) productos
   initialize() {
-
+    // implementacion de llamadas para carga de los productos desde mi db.json 
     fetch(url)
 
     .then  ( response => response.json())
@@ -9,43 +9,9 @@ class ProductManager {
       prods = data.products;
 
       this.loadProducts(prods);
+      this.showCart;
     })
 
-    // prods = [
-    //   {
-    //     id: "1",
-    //     marca: "Nike",
-    //     modelo: "Jordan Retro",
-    //     img: "jordan-retro.png",
-    //     precio: "$99.99",
-    //   },
-    //   {
-    //     id: "2",
-    //     marca: "Adidas",
-    //     modelo: "Yeezy",
-    //     img: "adidas-yeezy.png",
-    //     precio: "$299.99",
-    //   },
-    //   {
-    //     id: "3",
-    //     marca: "Nike",
-    //     modelo: "Air Force",
-    //     img: "air-force.png",
-    //     precio: "$79.99",
-    //   },
-    //   {
-    //     id: "4",
-    //     marca: "Nike",
-    //     modelo: "Air Max",
-    //     img: "air-max.png",
-    //     precio: "$69.99",
-    //   },
-    // ];
-
-
-
-    // llamo a la funcion perteneciente a esta clase detallada debajo
-    
   }
   // funcion de carga de los productos
   loadProducts(products) {
@@ -69,7 +35,7 @@ class ProductManager {
                     <div class = "content-box">
                         <h3>${element.marca} ${element.modelo}</h3>
                         <h4 class = "price">${element.precio}</h4>
-                        <a href="javascript:addProduct(${element.id})" class="buy">Buy Now</a>
+                        <a href="javascript:addProduct(${element.id})" class="buy"><i class="fa-solid fa-cart-plus"></i></a>
                     </div>
                 `;
 
@@ -84,19 +50,15 @@ class ProductManager {
     
     // confirmo al usuario que el producto fue agregado implementando SweetAlert2
     // luego voy a agregarla a remover productos, limpiar el carrito, y confirmar compra
-    const Toast = Swal.mixin({
+    const Toast1 = Swal.mixin({
       toast: true,
       position: 'top-end',
       showConfirmButton: false,
       timer: 3000,
       timerProgressBar: true,
-      didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
-      }
     })
     
-    Toast.fire({
+    Toast1.fire({
       icon: 'success',
       title: 'Producto añadido al carrito!'
     })
@@ -123,4 +85,5 @@ class ProductManager {
     });
 
   }
+
 }

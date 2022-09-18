@@ -26,3 +26,43 @@ function addProduct (id) {
     // llamo a la funcion proveniente de la clase ProductManager correspondiente
     manager.addToCart(product);
 }
+
+// definiendo selectores varios
+const cartButton = document.getElementById("cartIcon");
+const cartModal = document.querySelector("#cartModal");
+const closeButton = document.getElementById("closeButton")
+const confirmButton = document.getElementById("confirm")
+let cartContent = document.querySelector('#cart');
+
+
+// pequeña funcion para mostrar la ventana modal del cart, desde el icono en navbar
+const showCart = function () {
+    cartModal.classList.remove("hidden")
+    cartModal.classList.add("cart-modal")
+}
+
+// funcion para cerrar el carrito
+const closeCart = function () {
+    cartModal.classList.add("hidden")
+    cartModal.classList.remove("cart-modal")
+}
+
+// llamadas a las funciones
+cartButton.addEventListener('click', showCart)
+closeButton.addEventListener('click', closeCart)
+
+
+
+// funcion para finalizar la compra y vaciar el carrito
+confirmButton.addEventListener('click', () => {
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Su compra ha sido procesada, a la brevedad recibira un mail de confirmación',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    closeCart();
+    cartContent.innerHTML = "";
+})
+
